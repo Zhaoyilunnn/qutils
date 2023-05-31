@@ -1,0 +1,15 @@
+__pycache__*
+test_data*
+.ccls-cache*
+nohup.out
+*.bin
+*.bak*
+*tmp
+*temp*
+*core*
+*.png
+*.npy
+*.pdf
+*dist
+*egg-info
+*build
