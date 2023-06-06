@@ -17,11 +17,7 @@ class BaseParser(ABC):
     and the rest are float values
     """
 
-    def __init__(
-            self,
-            logs_path,
-            *args
-        ) -> None:
+    def __init__(self, logs_path, *args) -> None:
         self.logs_path = logs_path
         self.parse_args = args
 
@@ -29,6 +25,7 @@ class BaseParser(ABC):
         self.results = []
 
     def run(self):
+        """Traverse given logs_path, parse and generate a record for each log"""
         avg = []
         cnt = 0
         for root, dirs, files in os.walk(self.logs_path):
@@ -42,11 +39,10 @@ class BaseParser(ABC):
                 print("\t".join([str(it) for it in one_res]))
                 cnt += 1
                 if not avg:
-                    avg = [0.] * len(one_res[1:])
+                    avg = [0.0] * len(one_res[1:])
                 for i in range(len(avg)):
-                    avg[i] += one_res[i+1]
-        print('\t'.join(['avg'] + [str(it / cnt) for it in avg]))
-
+                    avg[i] += one_res[i + 1]
+        print("\t".join(["avg"] + [str(it / cnt) for it in avg]))
 
     @abstractmethod
     def parse_one(self, file_path, *args) -> List[Any]:

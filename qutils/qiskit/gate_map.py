@@ -998,7 +998,6 @@ def plot_error_map(backend, figsize=(12, 9), show_title=True, qubit_coordinates=
     directed = False
     line_colors = []
     if cmap:
-
         # Convert to percent
         cx_errors = 100 * np.asarray(cx_errors)
         avg_cx_err = np.mean(cx_errors)
@@ -1011,16 +1010,19 @@ def plot_error_map(backend, figsize=(12, 9), show_title=True, qubit_coordinates=
     max_read_err = np.max(read_err)
 
     fig = plt.figure(figsize=figsize)
-    #gridspec.GridSpec(nrows=2, ncols=3)
+    # gridspec.GridSpec(nrows=2, ncols=3)
 
     grid_spec = gridspec.GridSpec(
-        12, 12, height_ratios=[1] * 11 + [0.5], width_ratios=[2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2]
+        12,
+        12,
+        height_ratios=[1] * 11 + [0.5],
+        width_ratios=[2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
     )
 
-    #left_ax = plt.subplot(grid_spec[2:10, :1])
-    #main_ax = plt.subplot(grid_spec[:11, 1:11])
-    main_ax = plt.subplot(grid_spec[:11, :]) # Set main_ax to full screen
-    #right_ax = plt.subplot(grid_spec[2:10, 11:])
+    # left_ax = plt.subplot(grid_spec[2:10, :1])
+    # main_ax = plt.subplot(grid_spec[:11, 1:11])
+    main_ax = plt.subplot(grid_spec[:11, :])  # Set main_ax to full screen
+    # right_ax = plt.subplot(grid_spec[2:10, 11:])
     bleft_ax = plt.subplot(grid_spec[-1, :5])
     if cmap:
         bright_ax = plt.subplot(grid_spec[-1, 7:])
@@ -1070,18 +1072,18 @@ def plot_error_map(backend, figsize=(12, 9), show_title=True, qubit_coordinates=
         num_left = math.ceil(num_qubits / 2)
         num_right = num_qubits - num_left
 
-    #left_ax.barh(range(num_left), read_err[:num_left], align="center", color="#DDBBBA")
-    #left_ax.axvline(avg_read_err, linestyle="--", color="#212121")
-    #left_ax.set_yticks(range(num_left))
-    #left_ax.set_xticks([0, round(avg_read_err, 2), round(max_read_err, 2)])
-    #left_ax.set_yticklabels([str(kk) for kk in range(num_left)], fontsize=12)
-    #left_ax.invert_yaxis()
-    #left_ax.set_title("Readout Error (%)", fontsize=12)
+    # left_ax.barh(range(num_left), read_err[:num_left], align="center", color="#DDBBBA")
+    # left_ax.axvline(avg_read_err, linestyle="--", color="#212121")
+    # left_ax.set_yticks(range(num_left))
+    # left_ax.set_xticks([0, round(avg_read_err, 2), round(max_read_err, 2)])
+    # left_ax.set_yticklabels([str(kk) for kk in range(num_left)], fontsize=12)
+    # left_ax.invert_yaxis()
+    # left_ax.set_title("Readout Error (%)", fontsize=12)
 
-    #for spine in left_ax.spines.values():
+    # for spine in left_ax.spines.values():
     #    spine.set_visible(False)
 
-    #if num_right:
+    # if num_right:
     #    right_ax.barh(
     #        range(num_left, num_qubits), read_err[num_left:], align="center", color="#DDBBBA"
     #    )
@@ -1094,10 +1096,10 @@ def plot_error_map(backend, figsize=(12, 9), show_title=True, qubit_coordinates=
     #    right_ax.yaxis.set_label_position("right")
     #    right_ax.yaxis.tick_right()
     #    right_ax.set_title("Readout Error (%)", fontsize=12)
-    #else:
+    # else:
     #    right_ax.axis("off")
 
-    #for spine in right_ax.spines.values():
+    # for spine in right_ax.spines.values():
     #    spine.set_visible(False)
 
     if show_title:
