@@ -1,5 +1,6 @@
 import sys, os, psutil
-from typing import Dict, List
+import datetime
+from typing import Any, Dict, List
 import subprocess
 import time
 
@@ -171,3 +172,23 @@ def couple_map_to_graph(coupling_map: List[List]):
 
 # TODO(zhaoyilun): graph partition
 # 1. DFS and Fix sub-graph size
+
+
+class DatetimeJsonEncoder(json.JSONEncoder):
+    """A simple datetime json encoder for transforming
+    datetime within a dictionary to json"""
+    def default(self, o: Any) -> Any:
+        if isinstance(o, datetime.datetime):
+            return o.strftime("%Y-%m-%d %H:%M:%S")
+        else:
+            return super().default(o)
+
+class QiskitBackendJsonEncoder(json.JSONEncoder):
+    """Transform qiskit backendconfiguration/properties to json"""
+    def default(self, o: Any) -> Any:
+        if isinstance(o, datetime.datetime):
+            return o.strftime("%Y-%m-%d %H:%M:%S")
+        elif isinstance(o, complex):
+            return str(o.real) + str(o.imag) + "j"
+        else:
+            return super().default(o)
