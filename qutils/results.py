@@ -41,7 +41,9 @@ class BaseParser(ABC):
                 if not avg:
                     avg = [0.0] * len(one_res[1:])
                 for i in range(len(avg)):
-                    avg[i] += one_res[i + 1]
+                    element = one_res[i + 1]
+                    if isinstance(element, (int, float, complex)):
+                        avg[i] += one_res[i + 1]
         print("\t".join(["avg"] + [str(it / cnt) for it in avg]))
 
     @abstractmethod

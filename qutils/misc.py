@@ -177,14 +177,17 @@ def couple_map_to_graph(coupling_map: List[List]):
 class DatetimeJsonEncoder(json.JSONEncoder):
     """A simple datetime json encoder for transforming
     datetime within a dictionary to json"""
+
     def default(self, o: Any) -> Any:
         if isinstance(o, datetime.datetime):
             return o.strftime("%Y-%m-%d %H:%M:%S")
         else:
             return super().default(o)
 
+
 class QiskitBackendJsonEncoder(json.JSONEncoder):
     """Transform qiskit backendconfiguration/properties to json"""
+
     def default(self, o: Any) -> Any:
         if isinstance(o, datetime.datetime):
             return o.strftime("%Y-%m-%d %H:%M:%S")
