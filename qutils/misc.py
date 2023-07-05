@@ -195,3 +195,13 @@ class QiskitBackendJsonEncoder(json.JSONEncoder):
             return str(o.real) + str(o.imag) + "j"
         else:
             return super().default(o)
+
+
+def check_equiv_two_list(first: List[set], second: List[set]):
+    """For given two lists, check if they contain the same elements, if so, return true"""
+    if len(first) != len(second):
+        return False
+    for s in first:
+        if s not in second:
+            return False
+    return True
