@@ -10,8 +10,6 @@ from qiskit_aer import Aer
 
 from typing import Optional, Tuple, Union, List
 
-from constants import QCS_BENCHMARKS_DIR
-
 
 class BaseTest:
     # _sv_sim = Aer.get_backend("statevector_simulator")
