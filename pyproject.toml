@@ -1,6 +1,6 @@
 [project]
 name = "qutils"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
-    "qiskit==0.39.0"
+    "qiskit>=0.44.0"
 ]
