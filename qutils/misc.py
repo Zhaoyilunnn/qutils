@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 from qiskit.visualization.qcstyle import json
 from qiskit.visualization import plot_coupling_map, plot_gate_map
 
-from qutils.qiskit.gate_map import plot_error_map
 
 BARRIER_OP_LIST = ["measure", "reset", "barrier", "bfunc"]
 
@@ -135,13 +134,6 @@ def plot_topology(backend, figname=None):
     fig = plot_gate_map(backend)
     if figname:
         fig.savefig(figname)
-
-
-def plot_error(backend, figname=None, figsize=(12, 9), show_title=False):
-    fig = plot_error_map(backend, figsize=figsize, show_title=show_title)
-    if figname:
-        fig.savefig(figname)
-
 
 def pretty(d: Dict, indent=0) -> None:
     """
