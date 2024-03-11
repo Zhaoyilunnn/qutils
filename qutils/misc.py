@@ -7,7 +7,7 @@ import time
 
 import matplotlib.pyplot as plt
 
-from qiskit.visualization.qcstyle import json
+import json
 from qiskit.visualization import plot_coupling_map, plot_gate_map
 
 
@@ -50,10 +50,15 @@ def profile(t=2):
             time_before = time.time()
             result = func(*args, **kwargs)
             time_after = time.time()
-            print("{}:consumed time:\t{:,}".format(func.__name__, time_after - time_before))
+            print(
+                "{}:consumed time:\t{:,}".format(
+                    func.__name__, time_after - time_before
+                )
+            )
             return result
 
         return wrapper
+
     return decorator
 
 
@@ -134,6 +139,7 @@ def plot_topology(backend, figname=None):
     fig = plot_gate_map(backend)
     if figname:
         fig.savefig(figname)
+
 
 def pretty(d: Dict, indent=0) -> None:
     """
